@@ -19,4 +19,18 @@ Inválidos:
 
 */
 
-class EmailValidation {}
+class EmailValidation {
+  static String? EmailValidate(
+    final String email,
+  ) {
+    if (email.trim().isEmpty) {
+      return 'Please enter your email address';
+    }
+    if (!RegExp(
+            r'^[a-zA-Z_.0-9]+@((hotmail)|(outlook)|(gmail)).((com)).?((br))?')
+        .hasMatch(email)) {
+      return 'Please enter a valid email address';
+    }
+    return null;
+  }
+}

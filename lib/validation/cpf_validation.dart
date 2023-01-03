@@ -45,4 +45,15 @@ Dígitos validadores = 94
 
 */
 
-class CpfValidation {}
+class CpfValidation {
+  // static cpfValidate(
+  //   final String cpf,
+  // ) {
+  //   if (cpf.isEmpty ||
+  //       !RegExp("[0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2}").hasMatch(cpf)) {
+  //     return 'Enter correct cpf';
+  //   } else {
+  //     return null;
+  //   }
+  // }
+}

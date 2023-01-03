@@ -3,7 +3,7 @@ class AddressModel {
   final String district;
   final String city;
   final String state;
-  final double number;
+  final String number;
   final String cep;
   final String? complement;
 

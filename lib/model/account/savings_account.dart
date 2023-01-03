@@ -1,23 +1,13 @@
 import 'account_model.dart';
 
-class SavingsAccount extends AccountModel {
+class SavingsAccountModel extends AccountModel {
   // Poupança
-  final double agency;
-  final String bank;
-  final double accountNumber;
-  final double balance; // saldo
+
   final String? cardDebit; //somente débito
   final double income; // rendimento %
 
-  SavingsAccount(
-    super.transfers,
-    super.withdraw,
-    super.deposit,
-    this.agency,
-    this.bank,
-    this.accountNumber,
-    this.balance,
+  SavingsAccountModel(
     this.cardDebit,
     this.income,
-  );
+  ) : super('', '', '', '', '', 0, 0.0);
 }
