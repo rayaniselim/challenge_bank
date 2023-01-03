@@ -1,10 +1,10 @@
 import 'card_model.dart';
 
-class CardFull extends CardModel {
+class CardFullModel extends CardModel {
   final double limit;
   final double spent;
 
-  CardFull(
+  CardFullModel(
     super.number,
     super.cvv,
     super.flag,

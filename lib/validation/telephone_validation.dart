@@ -17,7 +17,7 @@ class TelephoneValidation {
   static telephoneValidate(
     final String telephone,
   ) {
-    if (telephone == null || telephone.trim().isEmpty) {
+    if (telephone.trim().isEmpty) {
       return 'This field is required';
     }
     if (!RegExp('([0-9()]{2,4})\ ?([0-9-]{9,10})').hasMatch(telephone)) {
