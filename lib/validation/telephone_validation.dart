@@ -21,6 +21,7 @@ class TelephoneValidation {
       return 'This field is required';
     }
     if (!RegExp('([0-9()]{2,4})\ ?([0-9-]{9,10})').hasMatch(telephone)) {
+      // mudar para \t e ver como funciona
       return 'Fill in your phone correctly';
     } else {
       return null;

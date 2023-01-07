@@ -20,7 +20,7 @@ Inválidos:
 */
 
 class EmailValidation {
-  static String? EmailValidate(
+  static String? emailValidate(
     final String email,
   ) {
     if (email.trim().isEmpty) {

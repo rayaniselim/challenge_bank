@@ -22,7 +22,7 @@ Dígitos validadores = 94
 
     - Passo 2:  
       Multiplicar o resultado do passo 1, multiplicar por 10 e posteriormente dividir por 11.  
-      Obs 1: Extraindo o resto não o resultado.  
+      Obs 1: Extraindo o resto não o resultado. 
       Obs 2: Caso o resto seja igual a 10 este deverá ser considerado como 0.
 
     - Passo 3:  

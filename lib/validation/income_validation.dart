@@ -7,4 +7,13 @@ Válidos:
 Inválidos:
 - -0.01
 */
-class IncomeValidation {}
+class IncomeValidation {
+  /*
+   - 
+   - 
+   - 
+   - 
+   - 
+   - 
+*/
+}

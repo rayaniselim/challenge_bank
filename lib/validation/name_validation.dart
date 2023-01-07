@@ -11,7 +11,7 @@ Inválidos:
 */
 
 class NameValidation {
-  static String? NameValidate(
+  static String? nameValidate(
     String name,
   ) {
     if (name.isEmpty ||
