@@ -22,4 +22,9 @@ void main() {
     final password = PasswordValidation.passwordValidate('01234567');
     expect(password, null);
   });
+
+  test('password validation deve retornar null.', () {
+    final password = PasswordValidation.passwordValidate('12345678');
+    expect(password, null);
+  });
 }

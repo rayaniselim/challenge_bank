@@ -40,7 +40,8 @@ void main() {
     final email = EmailValidation.emailValidate('whatever@gmail.com');
     expect(email, 'Is Valid');
   });
-  test('email validation deve retornar valid..', () {
+
+  test('email validation deve retornar valid    ', () {
     final email = EmailValidation.emailValidate('what.ever@gmail.com.br');
     expect(email, 'Is Valid');
   });
@@ -55,7 +56,7 @@ void main() {
     expect(email, 'Is Valid');
   });
 
-  test('email validation deve retornar  valid', () {
+  test('email validation deve retornar  valid ', () {
     final email = EmailValidation.emailValidate('Whatever@hotmail.com.br');
     expect(email, 'Is Valid');
   });

@@ -11,8 +11,6 @@ Visa Electron               4026, 417500, 4508, 4844, 4913, 16
 
 class NumberCardValidation {
   static numberCardValidate() {
-    // TODO: COLOCAR INPUT
-
     /*
    - 
    - 

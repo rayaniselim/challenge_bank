@@ -1,19 +1,5 @@
-/* 
-Nome Completo
-
-Válidos:
-  - Ana Whatever
-
-Inválidos:
-  - An
-  - Ana
-  - Ana Whatever 2
-*/
-
 class NameValidation {
-  static String? nameValidate(
-      // TODO: COLOCAR INPUT
-      String name) {
+  static String? nameValidate(String name) {
     if (name.isEmpty || name == null) {
       return 'This field is required';
     }

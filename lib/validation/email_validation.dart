@@ -1,37 +1,10 @@
-/* 
-Email
-
-Válidos:
-  - whatever@outlook.com.br
-  - what_ever@outlook.com
-  - whatever@gmail.com
-  - what.ever@gmail.com.br
-  - what.ever@hotmail.com
-  - whatever@hotmail.com.br
-  - Whatever@hotmail.com.br
-  - w23hatever@hotmail.com.br
-
-Inválidos:
-  - whatever@gov.uk
-  - 1whatever@outlook.com
-  - whatever$#@!@gmail.com
-  - whatever@outlook2com1br
-
-*/
-
 class EmailValidation {
-  // TODO: COLOCAR INPUT
-  static String? emailValidate(
-    final String email,
-  ) {
+  static String? emailValidate(final String email) {
     if (email.trim().isEmpty || email == null) {
       return 'Please enter your email address';
     }
     if (!RegExp(
-            // r'^[a-zA-Z_.0-9]+@((hotmail)|(outlook)|(gmail)).((com)).?((br))?$')
             r'^[a-zA-Z][a-zA-Z_.0-9]+@(hotmail|outlook|gmail)\.(com)(\.br)?$')
-        // r'^([a-zA-Z_])([0-9])?{5,20}@[a-z]((hotmail)|(outlook)|(gmail)).((com)).?((br))?$')
-
         .hasMatch(email)) {
       return 'Please enter a valid email address';
     }
