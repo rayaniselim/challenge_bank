@@ -8,6 +8,8 @@ Inválidos:
 - -0.01
 */
 class IncomeValidation {
+  // TODO: COLOCAR INPUT
+
   /*
    - 
    - 

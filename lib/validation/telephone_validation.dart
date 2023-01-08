@@ -14,7 +14,9 @@ Inválidos:
 */
 
 class TelephoneValidation {
-  static telephoneValidate(
+  // TODO: COLOCAR INPUT
+
+  static String? telephoneValidate(
     final String telephone,
   ) {
     if (telephone.trim().isEmpty) {
@@ -24,7 +26,7 @@ class TelephoneValidation {
       // mudar para \t e ver como funciona
       return 'Fill in your phone correctly';
     } else {
-      return null;
+      return 'Is valid';
     }
   }
 }

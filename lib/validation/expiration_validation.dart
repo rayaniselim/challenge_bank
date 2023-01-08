@@ -10,7 +10,7 @@ Inválidos:
 */
 
 class ExpirationValidation {
-  expirationDateValid() {
+  void expirationDateValid() {
     print('Qual é o mês de validade do cartão?');
     String? monthString = stdin.readLineSync();
     // String monthString = '02';
