@@ -12,10 +12,10 @@ Inválidos:
 */
 class PasswordValidation {
   // TODO: COLOCAR INPUT
-  static String? passwordValidate({
-    String? password,
-  }) {
-    if (password == null || password.trim().isEmpty) {
+  static String? passwordValidate(
+    final String? password,
+  ) {
+    if (password == null || password.isEmpty) {
       return 'This field is required';
     }
     if (!RegExp('[0-9]{8}').hasMatch(password)) {
