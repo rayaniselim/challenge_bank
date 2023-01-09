@@ -9,11 +9,7 @@ Inválidos:
 */
 class IncomeValidation {
   /*
-   - 
-   - 
-   - 
-   - 
-   - 
-   - 
+- método double
+- nao aceita valor negativo
 */
 }
