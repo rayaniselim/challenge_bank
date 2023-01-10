@@ -19,7 +19,6 @@ void main() {
       'telephone validation deve retornar incorreto com espaço em outra parte ...',
       () {
     String? teste = TelephoneValidation.telephoneValidate('6121230 451');
-
     expect(teste, 'Fill in your phone correctly');
   });
 

@@ -17,7 +17,7 @@ void main() {
     expect(password, 'Password must be 8 numeric characters');
   });
 
-  test('password validation deve retornar com 9 caracteres...', () {
+  test('password validation deve retornar invalido com 9 caracteres...', () {
     final password = PasswordValidation.passwordValidate('123456789');
     expect(password, 'Password must be 8 numeric characters');
   });
