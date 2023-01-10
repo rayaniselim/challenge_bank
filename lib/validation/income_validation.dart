@@ -7,9 +7,19 @@ Válidos:
 Inválidos:
 - -0.01
 */
+
 class IncomeValidation {
-  /*
-- método double
-- nao aceita valor negativo
-*/
+  static String? incomeMonthy(double? income) {
+    String incomeParse = income.toString();
+    final String? nullIncome = null;
+    if (income == null) {
+      return 'is null';
+    } else if (income.isNegative) {
+      return 'income is invalid';
+    }
+    if (!RegExp('[0-9.]+').hasMatch(incomeParse)) {
+      return 'Preencha sua renda corretamente';
+    }
+    return null;
+  }
 }
