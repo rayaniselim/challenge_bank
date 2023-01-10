@@ -13,7 +13,12 @@ Inválidos:
 Regra:  
 Dígitos comuns = 049.427.230  
 Dígitos validadores = 94
+*/
 
+class CpfValidation {
+  final String digitoComum = '049.427.230';
+  final String digitoValidador = '94';
+/*
   - Regra 1: Validação do décimo digito
     - Passo 1:  
       Somar o resultado da multiplicação dos números comuns pela ordem decrescente de 10 a 2;
@@ -27,8 +32,13 @@ Dígitos validadores = 94
 
     - Passo 3:  
       O décimo digito será válido caso o resultado do passo 2 seja igual ao décimo digito.
+*/
+  firstDigit(int first) {
+    for (;;) {}
+  }
 
-  - Regra 2: Validação do décimo primeiro digito
+  /*
+   - Regra 2: Validação do décimo primeiro digito
     - Passo 1:
       Somar o resultado da multiplicação dos 10 primeiros dígito pela ordem decrescente de 11 a 2;  
       OBS.: Deve-se considerar os 9 dígitos comuns mais o primeiro digito já validado, interando um total de 10 algarismos para o calculo.
@@ -39,13 +49,18 @@ Dígitos validadores = 94
       Multiplicar o resultado do passo 1, multiplicar por 10 e posteriormente dividir por 11.  
       Obs 1: Extraindo o resto não o resultado.  
       Obs 2: Caso o resto seja igual a 10 este deverá ser considerado como 0.  
+  */
 
+  secondDigit(int second) {}
+}
+
+
+
+/*
     Passo 3:  
       O décimo primeiro digito será válido caso o resultado do passo 2 seja igual ao décimo primeiro digito.
-
 */
 
-class CpfValidation {
   // static cpfValidate(
   //   final String cpf,
   // ) {
@@ -56,4 +71,3 @@ class CpfValidation {
   //     return null;
   //   }
   // }
-}

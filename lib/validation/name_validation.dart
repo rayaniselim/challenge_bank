@@ -1,10 +1,9 @@
 class NameValidation {
-  static String? nameValidate(String name) {
-    if (name.isEmpty || name == null) {
+  static String? nameValidate(String? name) {
+    if (name == null || name.trim().isEmpty) {
       return 'This field is required';
     }
-    if (!RegExp(r'([a-zA-Z]{3,6})\ +([a-zA-Z]{3,6})\ ?([a-zA-Z]{0,10})$')
-        .hasMatch(name)) {
+    if (!RegExp(r'^([a-zA-Z]{3,})(\ [a-zA-Z]{3,})+$').hasMatch(name)) {
       return 'Enter correct name';
     } else {
       return null;

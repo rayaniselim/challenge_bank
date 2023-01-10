@@ -1,6 +1,6 @@
 class EmailValidation {
-  static String? emailValidate(final String email) {
-    if (email.trim().isEmpty || email == null) {
+  static String? emailValidate(String? email) {
+    if (email == null || email.trim().isEmpty) {
       return 'Please enter your email address';
     }
     if (!RegExp(

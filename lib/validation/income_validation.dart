@@ -9,15 +9,11 @@ Inválidos:
 */
 
 class IncomeValidation {
-  static String? incomeMonthy(double? income) {
-    String incomeParse = income.toString();
-    final String? nullIncome = null;
+  static String? incomeMonthy(String? income) {
     if (income == null) {
-      return 'is null';
-    } else if (income.isNegative) {
-      return 'income is invalid';
+      return null;
     }
-    if (!RegExp('[0-9.]+').hasMatch(incomeParse)) {
+    if (!RegExp(r'^[\d]+[.][\d]+$').hasMatch(income)) {
       return 'Preencha sua renda corretamente';
     }
     return null;

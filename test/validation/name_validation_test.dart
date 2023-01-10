@@ -16,9 +16,19 @@ void main() {
     final name = NameValidation.nameValidate('Ana Whatever 2');
     expect(name, 'Enter correct name');
   });
+  test('name validation deve retornar errado pois tem espaço no final ...', () {
+    final name =
+        NameValidation.nameValidate('Whatever Whatever Whatever Whatever ');
+    expect(name, 'Enter correct name');
+  });
 
   /// Caminho feliz
 
+  test('name validation deve retornar null pois tem 4 ...', () {
+    final name =
+        NameValidation.nameValidate('Whatever Whatever Whatever Whatever');
+    expect(name, null);
+  });
   test('name validation deve retornar null porque está certo ...', () {
     final name = NameValidation.nameValidate('Ana Whatever');
     expect(name, null);
