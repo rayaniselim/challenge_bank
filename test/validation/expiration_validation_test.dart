@@ -2,6 +2,8 @@ import 'package:challenge_bank/validation/expiration_validation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
+  /// CAMINHO TRISTE
+
   test('expiration validation retornar invalido por causa do dia', () {
     final expiration = ExpirationValidation.expirationDateValid('2024-12-01');
     expect(expiration, 'Coloque a data no formato 0000-00 ano e mes');

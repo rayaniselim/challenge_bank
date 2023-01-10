@@ -2,32 +2,34 @@ import 'package:challenge_bank/validation/password_validation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('password validation deve retornar vazio...', () {
+  /// CAMINHO TRISTE
+
+  test('password validation deve retornar vazio', () {
     final password = PasswordValidation.passwordValidate('');
     expect(password, 'This field is required');
   });
 
-  test('password validation deve retornar um espaço em branco...', () {
+  test('password validation deve retornar um espaço em branco', () {
     final password = PasswordValidation.passwordValidate(' ');
     expect(password, 'This field is required');
   });
 
-  test('password validation deve retornar menor que 8 caracteres...', () {
+  test('password validation deve retornar menor que 8 caracteres', () {
     final password = PasswordValidation.passwordValidate('1234567');
     expect(password, 'Password must be 8 numeric characters');
   });
 
-  test('password validation deve retornar invalido com 9 caracteres...', () {
+  test('password validation deve retornar invalido com 9 caracteres', () {
     final password = PasswordValidation.passwordValidate('123456789');
     expect(password, 'Password must be 8 numeric characters');
   });
 
-  test('password validation deve retornar caracteres invalidos...', () {
+  test('password validation deve retornar caracteres invalidos', () {
     final password = PasswordValidation.passwordValidate('as#%as12');
     expect(password, 'Password must be 8 numeric characters');
   });
 
-  /// caminho feliz
+  /// CAMINHO FELIZ
   test(
       'password validation deve retornar valido com espaço no final, porque a regex vai remover',
       () {

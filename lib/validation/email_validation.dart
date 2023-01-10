@@ -8,6 +8,6 @@ class EmailValidation {
         .hasMatch(email)) {
       return 'Please enter a valid email address';
     }
-    return 'Is Valid';
+    return null;
   }
 }

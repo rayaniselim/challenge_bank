@@ -2,6 +2,8 @@ import 'package:challenge_bank/validation/cpf_validation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
+  /// CAMINHO TRISTE
+
   // test('o FirstDigit  deveria retornar TRUE', () {
   //   String cpf = '04942723094';
   //   final first = CpfValidation.validFirstDigit(cpf);
