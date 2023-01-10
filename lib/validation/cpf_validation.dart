@@ -16,58 +16,55 @@ Dígitos validadores = 94
 */
 
 class CpfValidation {
-  final String digitoComum = '049.427.230';
-  final String digitoValidador = '94';
-/*
-  - Regra 1: Validação do décimo digito
-    - Passo 1:  
-      Somar o resultado da multiplicação dos números comuns pela ordem decrescente de 10 a 2;
+  static validFirstDigit(String cpf) {
+    final String cpf = '04942723094';
+    num soma = 0;
 
-      Ex: `1*10 + 2*9 + 3*8 + 4*7 + ...9\*2`
-
-    - Passo 2:  
-      Multiplicar o resultado do passo 1, multiplicar por 10 e posteriormente dividir por 11.  
-      Obs 1: Extraindo o resto não o resultado. 
-      Obs 2: Caso o resto seja igual a 10 este deverá ser considerado como 0.
-
-    - Passo 3:  
-      O décimo digito será válido caso o resultado do passo 2 seja igual ao décimo digito.
-*/
-  firstDigit(int first) {
-    for (;;) {}
+    for (var numIncial = 0; numIncial < 9; numIncial++) {
+      String cpfIndex = cpf[numIncial];
+      int cpfInt = int.parse(cpfIndex);
+      int resultadoMultiplier = (11 - numIncial);
+//  Somar o resultado da multiplicação pela ordem decrescente de 10 a 2;
+      soma += cpfInt * resultadoMultiplier;
+//  Multiplicar o resultado do passo 1 por 10 e posteriormente dividir por 11.
+      double resultDivider = soma / 11;
+      if (resultDivider < 10) {
+        return cpf[9] == resultDivider;
+      }
+      return cpf[9] == 0;
+// Caso o resto seja igual a 10 este deverá ser considerado como 0.
+    }
   }
 
-  /*
-   - Regra 2: Validação do décimo primeiro digito
-    - Passo 1:
-      Somar o resultado da multiplicação dos 10 primeiros dígito pela ordem decrescente de 11 a 2;  
-      OBS.: Deve-se considerar os 9 dígitos comuns mais o primeiro digito já validado, interando um total de 10 algarismos para o calculo.
+  static validSecondDigit(String second) {
+    final String cpf = '04942723094';
+    num soma = 0;
 
-      Ex: `1*11 + 2*10 + 3*9 + 4*8 + ...1\*2`
+    for (var numIncial = 0; numIncial < 9; numIncial++) {
+      String cpfIndex = cpf[numIncial];
+      int cpfInt = int.parse(cpfIndex);
+      int resultadoMultiplier = (11 - numIncial);
+// Somar o resultado da multiplicação dos 10 primeiros dígito pela ordem decrescente de 11 a 2;
+// considerar os 9 dígitos  + o digito já validado, interando um total de 10 algarismos para o calculo.
+      soma += cpfInt * resultadoMultiplier;
+// Multiplicar o resultado do passo 1, multiplicar por 10 e posteriormente dividir por 11.
+      double resultDivider = soma / 11;
+      if (resultDivider < 10) {
+        return cpf[10] == resultDivider;
+      }
+      return cpf[10] == 0;
+    }
+  }
 
-    - Passo 2:
-      Multiplicar o resultado do passo 1, multiplicar por 10 e posteriormente dividir por 11.  
-      Obs 1: Extraindo o resto não o resultado.  
-      Obs 2: Caso o resto seja igual a 10 este deverá ser considerado como 0.  
-  */
-
-  secondDigit(int second) {}
+/* Passo 3:  
+      O décimo primeiro digito será válido caso o resultado do passo 2 seja igual ao décimo primeiro digito.*/
+  static validarCpf(String cpf) {
+    if (validFirstDigit(cpf)) {
+      return false;
+    }
+    if (validSecondDigit(cpf)) {
+      return false;
+    }
+    return true;
+  }
 }
-
-
-
-/*
-    Passo 3:  
-      O décimo primeiro digito será válido caso o resultado do passo 2 seja igual ao décimo primeiro digito.
-*/
-
-  // static cpfValidate(
-  //   final String cpf,
-  // ) {
-  //   if (cpf.isEmpty ||
-  //       !RegExp("[0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2}").hasMatch(cpf)) {
-  //     return 'Enter correct cpf';
-  //   } else {
-  //     return null;
-  //   }
-  // }
