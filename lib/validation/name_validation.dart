@@ -1,12 +1,12 @@
 class NameValidation {
-  static String? nameValidate(String? name) {
-    if (name == null || name.trim().isEmpty) {
-      return 'This field is required';
+  static bool nameValidate(String name) {
+    if (name.trim().isEmpty) {
+      return false;
     }
     if (!RegExp(r'^([a-zA-Z]{3,})(\ [a-zA-Z]{3,})+$').hasMatch(name)) {
-      return 'Enter correct name';
+      return false;
     } else {
-      return null;
+      return true;
     }
   }
 }

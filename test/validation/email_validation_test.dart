@@ -1,5 +1,5 @@
-import 'package:challenge_bank/validation/email_validation.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:app_bank/validation/email_validation.dart';
+import 'package:test/test.dart';
 
 void main() {
   /// CAMINHO TRISTE

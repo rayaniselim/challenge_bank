@@ -7,5 +7,5 @@ class CurrentAccountModel extends AccountModel {
   CurrentAccountModel(
     this.card,
     this.loan,
-  ) : super('', '', '', '', '', 0, 0.0);
+  ) : super('', '', '', '', 0, 0.0);
 }

@@ -9,5 +9,5 @@ class SavingsAccountModel extends AccountModel {
   SavingsAccountModel(
     this.cardDebit,
     this.income,
-  ) : super('', '', '', '', '', 0, 0.0);
+  ) : super('', '', '', '', 0, 0.0);
 }

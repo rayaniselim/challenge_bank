@@ -1,5 +1,5 @@
-import 'package:challenge_bank/validation/expiration_validation.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
+import '/Users/rayaniselim/Documents/fteam/app_bank/lib/validation/expiration_validation.dart';
 
 void main() {
   /// CAMINHO TRISTE
