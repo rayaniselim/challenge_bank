@@ -1,33 +1,30 @@
-// // import 'package:args/args.dart';
-// // import 'dart:convert';
-// import 'dart:io';
+/* ## Passo 1 
+Deve ser inserido na seguinte ordem:
+  * Nome
+  * Email
+  * Telefone
+  * CPF
+  * Senha
+  * Endereço
+    * CEP
+    * Rua
+    * Bairro
+    * Cidade
+    * Estado
+    * Número
+    * Complemento
+  * Renda mensal */
 
-// import '../validation/name_validation.dart';
+// stdout	A saída padrão
+// stderr	O erro padrão
+// stdin	A entrada padrão
+void main() {
+// while (condicao) { o loop só vai iniciar se a condicao for verdadeira}
 
-// /*
-// ## Passo 1 
-// Deve ser inserido na seguinte ordem:
-//   * Nome
-//   * Email
-//   * Telefone
-//   * CPF
-//   * Senha
-//   * Endereço
-//     * CEP
-//     * Rua
-//     * Bairro
-//     * Cidade
-//     * Estado
-//     * Número
-//     * Complemento
-//   * Renda mensal
-// */
+// do { aqui ele inicia  a condicao
+// } while (e depois ele pergunta); se o loop for falso, pelo menos uma vez ele executa
 
-// // stdout	A saída padrão
-// // stderr	O erro padrão
-// // stdin	A entrada padrão
-// void main() {
-// // String? pegarNome(String name) {
+// String? pegarNome(String name) {
 //   stdout.writeln('Digite o seu nome completo'); // ln faz a quebra de linha
 //   final inputName = stdin.readLineSync().toString();
 //   stdout.writeln('O nome digitado é: $inputName');
@@ -36,4 +33,4 @@
 //   print(validationName);
 
 //   while (validationName != null) {}
-// }
+}
