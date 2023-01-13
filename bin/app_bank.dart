@@ -57,17 +57,32 @@ main() {
   //   }
   // }
 
-  bool getCep = false;
-  while (!getCep) {
-    stdout.writeln('Digite o seu cep');
-    final inputCep = stdin.readLineSync().toString();
-    if (inputCep.isEmpty) {
-      print('O cep é requerido');
-    } else if (!RegExp(r'^[0-9]{8}$').hasMatch(inputCep)) {
+  // bool getCep = false;
+  // while (!getCep) {
+  //   stdout.writeln('Digite o seu cep');
+  //   final inputCep = stdin.readLineSync().toString();
+  //   if (inputCep.isEmpty) {
+  //     print('O cep é requerido');
+  //   } else if (!RegExp(r'^[0-9]{8}$').hasMatch(inputCep)) {
+  //     print('Digite corretamente');
+  //   } else {
+  //     stdout.writeln('O cep digitado é: $inputCep');
+  //     getCep = true;
+  //   }
+  // }
+
+  bool getRua = false;
+  while (!getRua) {
+    stdout.writeln('Digite o nome da sua rua/avenida');
+    final inputRua = stdin.readLineSync().toString();
+    if (inputRua.isEmpty) {
+      print('O nome da rua/avenida é requerido');
+    } else if (!RegExp(r'^([a-zA-Z]{3,})(\ [a-zA-Z]{3,})+$')
+        .hasMatch(inputRua)) {
       print('Digite corretamente');
     } else {
-      stdout.writeln('O cep digitado é: $inputCep');
-      getCep = true;
+      stdout.writeln('A rua/avenida digitado é: $inputRua');
+      getRua = true;
     }
   }
 }
