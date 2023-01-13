@@ -1,12 +1,8 @@
 class PasswordValidation {
-  static String? passwordValidate(String? password) {
-    final handledPassword = password?.trim();
-    if (handledPassword == null || handledPassword.isEmpty) {
-      return 'This field is required';
+  static bool passwordValidate(String password) {
+    if (!RegExp(r'^[0-9]{8}$').hasMatch(password)) {
+      return false;
     }
-    if (!RegExp(r'^[0-9]{8}$').hasMatch(handledPassword)) {
-      return 'Password must be 8 numeric characters';
-    }
-    return null;
+    return true;
   }
 }

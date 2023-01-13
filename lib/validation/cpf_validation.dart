@@ -21,11 +21,9 @@ class CpfValidation {
     soma = soma + (int.parse(posicaoOito) * 3);
     soma = soma + (int.parse(posicaoNove) * 2);
 
-    print(soma);
     var multiplicacao = soma * 10;
     var resto = multiplicacao % 11;
-    print(multiplicacao);
-    print(resto);
+
     if (resto == 10) {
       resto = 0;
     }
@@ -59,12 +57,8 @@ class CpfValidation {
     soma = soma + (int.parse(posicaoNove) * 3);
     soma = soma + (int.parse(posicaoDez) * 2);
 
-    print(soma);
-
     var multiplicacao = soma * 10;
     var resto = multiplicacao % 11;
-    print(multiplicacao);
-    print(resto);
     if (resto == 10) {
       resto = 0;
     }
