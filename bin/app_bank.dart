@@ -47,13 +47,27 @@ main() {
   //   }
   // }
 
-  bool getPassword = false;
-  while (!getPassword) {
-    stdout.writeln('Digite sua senha');
-    final inputPassword = stdin.readLineSync().toString();
-    getPassword = PasswordValidation.passwordValidate(inputPassword);
-    if (getPassword == true) {
-      stdout.writeln('O cpf digitado é: $inputPassword');
+  // bool getPassword = false;
+  // while (!getPassword) {
+  //   stdout.writeln('Digite sua senha');
+  //   final inputPassword = stdin.readLineSync().toString();
+  //   getPassword = PasswordValidation.passwordValidate(inputPassword);
+  //   if (getPassword == true) {
+  //     stdout.writeln('O cpf digitado é: $inputPassword');
+  //   }
+  // }
+
+  bool getCep = false;
+  while (!getCep) {
+    stdout.writeln('Digite o seu cep');
+    final inputCep = stdin.readLineSync().toString();
+    if (inputCep.isEmpty) {
+      print('O cep é requerido');
+    } else if (!RegExp(r'^[0-9]{8}$').hasMatch(inputCep)) {
+      print('Digite corretamente');
+    } else {
+      stdout.writeln('O cep digitado é: $inputCep');
+      getCep = true;
     }
   }
 }
