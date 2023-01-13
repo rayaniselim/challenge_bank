@@ -10,5 +10,3 @@ class NameValidation {
     }
   }
 }
-
-// TODO: VOLTAR O NULL PARA OS MÉTODOS

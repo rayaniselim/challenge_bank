@@ -1,6 +1,9 @@
 class ExpirationValidation {
-  static String? expirationDateValid(String dateCard) {
-    if (!RegExp(r'^[0-9]{4}[-][0-9]{1,2}$').hasMatch(dateCard)) {
+  static String? expirationDateValid(String? dateCard) {
+    if (dateCard == null || dateCard.isEmpty) {
+      return 'Esse campo é requerido';
+    }
+    if (!RegExp(r'^[0-9]{4}[-][0-9]{1,2}$').hasMatch(dateCard!)) {
       return 'Coloque a data no formato 0000-00 ano e mes';
     }
     final dateInt = dateCard.split('-');
