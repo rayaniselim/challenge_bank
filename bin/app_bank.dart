@@ -71,18 +71,33 @@ main() {
   //   }
   // }
 
-  bool getRua = false;
-  while (!getRua) {
-    stdout.writeln('Digite o nome da sua rua/avenida');
-    final inputRua = stdin.readLineSync().toString();
-    if (inputRua.isEmpty) {
-      print('O nome da rua/avenida é requerido');
-    } else if (!RegExp(r'^([a-zA-Z]{3,})(\ [a-zA-Z]{3,})+$')
-        .hasMatch(inputRua)) {
+  // bool getRua = false;
+  // while (!getRua) {
+  //   stdout.writeln('Digite o nome da sua rua/avenida');
+  //   final inputRua = stdin.readLineSync().toString();
+  //   if (inputRua.isEmpty) {
+  //     print('O nome da rua/avenida é requerido');
+  //   } else if (!RegExp(r'^([a-zA-Z]{3,})(\ [a-zA-Z]{3,})+$')
+  //       .hasMatch(inputRua)) {
+  //     print('Digite corretamente');
+  //   } else {
+  //     stdout.writeln('A rua/avenida digitado é: $inputRua');
+  //     getRua = true;
+  //   }
+  // }
+
+  bool getBairro = false;
+  while (!getBairro) {
+    stdout.writeln('Digite o nome do seu bairro');
+    final inputBairro = stdin.readLineSync().toString();
+    if (inputBairro.isEmpty) {
+      print('O nome do bairro é requerido');
+    } else if (!RegExp(r'^[a-zA-Z]{3,}\ ?[a-zA-Z]{0,}?\ ?[a-zA-Z]{0,}?$')
+        .hasMatch(inputBairro)) {
       print('Digite corretamente');
     } else {
-      stdout.writeln('A rua/avenida digitado é: $inputRua');
-      getRua = true;
+      stdout.writeln('A bairro digitado é: $inputBairro');
+      getBairro = true;
     }
   }
 }
