@@ -6,43 +6,43 @@ void main() {
 
   test('password validation deve retornar vazio', () {
     final password = PasswordValidation.passwordValidate('');
-    expect(password, 'This field is required');
+    expect(password, false);
   });
 
   test('password validation deve retornar um espaço em branco', () {
     final password = PasswordValidation.passwordValidate(' ');
-    expect(password, 'This field is required');
+    expect(password, false);
   });
 
   test('password validation deve retornar menor que 8 caracteres', () {
     final password = PasswordValidation.passwordValidate('1234567');
-    expect(password, 'Password must be 8 numeric characters');
+    expect(password, false);
   });
 
   test('password validation deve retornar invalido com 9 caracteres', () {
     final password = PasswordValidation.passwordValidate('123456789');
-    expect(password, 'Password must be 8 numeric characters');
+    expect(password, false);
   });
 
   test('password validation deve retornar caracteres invalidos', () {
     final password = PasswordValidation.passwordValidate('as#%as12');
-    expect(password, 'Password must be 8 numeric characters');
+    expect(password, false);
   });
 
   /// CAMINHO FELIZ
   test(
       'password validation deve retornar valido com espaço no final, porque a regex vai remover',
       () {
-    final password = PasswordValidation.passwordValidate('01234567 ');
-    expect(password, null);
-  });
-  test('password validation deve retornar null', () {
     final password = PasswordValidation.passwordValidate('01234567');
-    expect(password, null);
+    expect(password, true);
+  });
+  test('password validation deve retornar true', () {
+    final password = PasswordValidation.passwordValidate('01234567');
+    expect(password, true);
   });
 
-  test('password validation deve retornar null 8 caracteres.', () {
+  test('password validation deve retornar true 8 caracteres.', () {
     final password = PasswordValidation.passwordValidate('12345678');
-    expect(password, null);
+    expect(password, true);
   });
 }

@@ -4,40 +4,40 @@ import 'package:test/test.dart';
 void main() {
   /// CAMINHO TRISTE
 
-  test('name validation deve retornar null ou vazio', () {
+  test('name validation deve retornar true ou vazio', () {
     final name = NameValidation.nameValidate('');
-    expect(name, 'This field is required');
+    expect(name, false);
   });
 
   test('name validation deve retornar errado', () {
     final name = NameValidation.nameValidate('an aa');
-    expect(name, 'Enter correct name');
+    expect(name, false);
   });
 
   test('name validation deve retornar errado pois tem numero', () {
     final name = NameValidation.nameValidate('Ana Whatever 2');
-    expect(name, 'Enter correct name');
+    expect(name, false);
   });
   test('name validation deve retornar errado pois tem espaço no final', () {
     final name =
         NameValidation.nameValidate('Whatever Whatever Whatever Whatever ');
-    expect(name, 'Enter correct name');
+    expect(name, false);
   });
 
   /// CAMINHO FELIZ
 
-  test('name validation deve retornar null pois tem 4 nomes', () {
+  test('name validation deve retornar true pois tem 4 nomes', () {
     final name =
         NameValidation.nameValidate('Whatever Whatever Whatever Whatever');
-    expect(name, null);
+    expect(name, true);
   });
-  test('name validation deve retornar null porque está certo', () {
+  test('name validation deve retornar true porque está certo', () {
     final name = NameValidation.nameValidate('Ana Whatever');
-    expect(name, null);
+    expect(name, true);
   });
 
-  test('name validation deve retornar null', () {
+  test('name validation deve retornar true', () {
     final name = NameValidation.nameValidate('Rayani Selim');
-    expect(name, null);
+    expect(name, true);
   });
 }
