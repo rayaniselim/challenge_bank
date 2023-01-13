@@ -3,7 +3,7 @@
 Após essas informações, ele deve escolher se deseja uma conta corrente ou poupança
 
 Independente da conta, 
-  * A agência deve ser auto gerada
+  * A agência deve ser auto gerada // RANDON? 
   * O Banco deve ter um código de 3 dígitos a sua escolha
   * O número da conta deve ser auto gerado
   * O saldo iniciado zerado
@@ -20,3 +20,6 @@ Caso seja tenha escolhido corrente
     * Caso ele tenha enviado uma renda mensal, deve ter a opção de crédito.
     * Caso não tenha, o cartão só poderá ser de débito.
 */
+
+
+
