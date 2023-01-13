@@ -101,19 +101,66 @@ main() {
   //   }
   // }
 
-  bool getCidade = false;
-  while (!getCidade) {
-    stdout.writeln('Digite o nome da cidade');
-    final inputCidade = stdin.readLineSync().toString();
-    if (inputCidade.isEmpty) {
-      print('O nome da cidade é requerido');
-    } else if (!RegExp(
-            r'^[a-zA-Záãí]{3,}\ ?[a-zA-Záãí]{0,}?\ ?[a-zA-Záãí]{0,}?$')
-        .hasMatch(inputCidade)) {
-      print('Digite corretamente');
-    } else {
-      stdout.writeln('A cidade digitada é: $inputCidade');
-      getCidade = true;
-    }
-  }
+  // bool getCidade = false;
+  // while (!getCidade) {
+  //   stdout.writeln('Digite o nome da cidade');
+  //   final inputCidade = stdin.readLineSync().toString();
+  //   if (inputCidade.isEmpty) {
+  //     print('O nome da cidade é requerido');
+  //   } else if (!RegExp(
+  //           r'^[a-zA-Záãí]{3,}\ ?[a-zA-Záãí]{0,}?\ ?[a-zA-Záãí]{0,}?$')
+  //       .hasMatch(inputCidade)) {
+  //     print('Digite corretamente');
+  //   } else {
+  //     stdout.writeln('A cidade digitada é: $inputCidade');
+  //     getCidade = true;
+  //   }
+  // }
+
+  // bool getEstado = false;
+  // while (!getEstado) {
+  //   stdout.writeln('Digite o nome do estado');
+  //   final inputEstado = stdin.readLineSync().toString();
+  //   if (inputEstado.isEmpty) {
+  //     print('O nome do estado é requerido');
+  //   } else if (!RegExp(
+  //           r'^[a-zA-Záãí]{3,}\ ?[a-zA-Záãí]{0,}?\ ?[a-zA-Záãí]{0,}?$')
+  //       .hasMatch(inputEstado)) {
+  //     print('Digite corretamente');
+  //   } else {
+  //     stdout.writeln('O estado digitado é: $inputEstado');
+  //     getEstado = true;
+  //   }
+  // }
+
+  // bool getNumero = false;
+  // while (!getNumero) {
+  //   stdout.writeln('Digite o número');
+  //   final inputNumero = stdin.readLineSync().toString();
+  //   if (inputNumero.isEmpty) {
+  //     print('O número é requerido');
+  //   } else if (!RegExp(r'^[0-9a-zA-Z-]{1,}\ ?[a-zA-Z0-9-]{0,}?$')
+  //       .hasMatch(inputNumero)) {
+  //     print('Digite corretamente');
+  //   } else {
+  //     stdout.writeln('O número digitado é: $inputNumero');
+  //     getNumero = true;
+  //   }
+  // }
+
+  // bool getComplemento = false;
+  // while (!getComplemento) {
+  //   stdout.writeln('Digite o complemento');
+  //   final inputComplemento = stdin.readLineSync().toString();
+  //   if (inputComplemento.isEmpty) {
+  //     print('O complemento é requerido');
+  //   } else if (!RegExp(
+  //           r'^[a-zA-Záãí0-9]{3,}\ ?[a-zA-Záãí0-9]{0,}?\ ?[a-zA-Záãí0-9]{0,}?$')
+  //       .hasMatch(inputComplemento)) {
+  //     print('Digite corretamente');
+  //   } else {
+  //     stdout.writeln('O complemento digitado é: $inputComplemento');
+  //     getComplemento = true;
+  //   }
+  // }
 }
