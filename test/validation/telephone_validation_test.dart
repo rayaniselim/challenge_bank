@@ -7,89 +7,89 @@ void main() {
   test('telephone validation deve retornar vazio', () {
     final String telefoneValid = '';
     final telephoneTrue = TelephoneValidation.telephoneValidate(telefoneValid);
-    expect(telephoneTrue, 'This field is required');
+    expect(telephoneTrue, false);
   });
 
   test('telephone validation deve retornar incorreto com 8 digitos', () {
-    String? teste = TelephoneValidation.telephoneValidate('12123451');
-    expect(teste, 'Fill in your phone correctly');
+    bool teste = TelephoneValidation.telephoneValidate('12123451');
+    expect(teste, false);
   });
 
   test('telephone validation deve retornar incorreto com espaço em outra parte',
       () {
-    String? teste = TelephoneValidation.telephoneValidate('6121230 451');
-    expect(teste, 'Fill in your phone correctly');
+    bool teste = TelephoneValidation.telephoneValidate('6121230 451');
+    expect(teste, false);
   });
 
   test('telephone validation deve retornar incorreto com caracteres', () {
-    String? teste = TelephoneValidation.telephoneValidate('6612129#3451');
-    expect(teste, 'Fill in your phone correctly');
+    bool teste = TelephoneValidation.telephoneValidate('6612129#3451');
+    expect(teste, false);
   });
 
   test(
       'telephone validation deve retornar incorreto quando comecar com 0 e terminar com --',
       () {
-    String? teste = TelephoneValidation.telephoneValidate('02123451--');
-    expect(teste, 'Fill in your phone correctly');
+    bool teste = TelephoneValidation.telephoneValidate('02123451--');
+    expect(teste, false);
   });
 
   test(
       'telephone validation deve retornar incorreto quando comecar com 0 e o ddd for 3',
       () {
-    String? teste = TelephoneValidation.telephoneValidate('065999991111');
-    expect(teste, 'Fill in your phone correctly');
+    bool teste = TelephoneValidation.telephoneValidate('065999991111');
+    expect(teste, false);
   });
 
   test('telephone validation deve retornar incorreto quando comecar com 0 ',
       () {
-    String? teste = TelephoneValidation.telephoneValidate('05999991111');
-    expect(teste, 'Fill in your phone correctly');
+    bool teste = TelephoneValidation.telephoneValidate('05999991111');
+    expect(teste, false);
   });
 
   test('telephone validation deve retornar invalid usando letra', () {
-    String? teste = TelephoneValidation.telephoneValidate('12a123451234');
-    expect(teste, 'Fill in your phone correctly');
+    bool teste = TelephoneValidation.telephoneValidate('12a123451234');
+    expect(teste, false);
   });
 
   test('telephone validation deve retornar invalid usando ponto', () {
-    String? teste = TelephoneValidation.telephoneValidate('1212345.1234');
-    expect(teste, 'Fill in your phone correctly');
+    bool teste = TelephoneValidation.telephoneValidate('1212345.1234');
+    expect(teste, false);
   });
 
   test('telephone validation deve retornar TRUE', () {
-    String? teste = TelephoneValidation.telephoneValidate('12 123451234 aadas');
-    expect(teste, 'Fill in your phone correctly');
+    bool teste = TelephoneValidation.telephoneValidate('12 123451234 aadas');
+    expect(teste, false);
   });
 
   /// CAMINHO FELIZ
 
   test('telephone validation deve retornar TRUE', () {
-    String? teste = TelephoneValidation.telephoneValidate('12123451234');
-    expect(teste, null);
+    bool teste = TelephoneValidation.telephoneValidate('65981749688');
+    expect(teste, true);
   });
 
   test('telephone validation deve retornar true usando espaço', () {
-    String? teste = TelephoneValidation.telephoneValidate('12 123451234');
-    expect(teste, null);
+    bool teste = TelephoneValidation.telephoneValidate('12 123451234');
+    expect(teste, true);
   });
 
   test('telephone validation deve retornar true usando espaço -', () {
-    String? teste = TelephoneValidation.telephoneValidate('12 12345-1234');
-    expect(teste, null);
+    bool teste = TelephoneValidation.telephoneValidate('12 12345-1234');
+    expect(teste, true);
   });
 
   test('telephone validation deve retornar true usando () -', () {
-    String? teste = TelephoneValidation.telephoneValidate('(12) 12345-1234');
-    expect(teste, null);
+    bool teste = TelephoneValidation.telephoneValidate('(12) 12345-1234');
+    expect(teste, true);
   });
 
   test('telephone validation deve retornar true usando ()', () {
-    String? teste = TelephoneValidation.telephoneValidate('(12) 123451234');
-    expect(teste, null);
+    bool teste = TelephoneValidation.telephoneValidate('(12) 123451234');
+    expect(teste, true);
   });
 
   test('telephone validation deve retornar true usando (', () {
-    String? teste = TelephoneValidation.telephoneValidate('(12)123451234');
-    expect(teste, null);
+    bool teste = TelephoneValidation.telephoneValidate('(12)123451234');
+    expect(teste, true);
   });
 }

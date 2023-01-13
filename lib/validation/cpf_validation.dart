@@ -1,70 +1,83 @@
-/* 
-CPF
-Válidos:
-  - 049.427.230-94
-  - 358.760.060-09
-  - 595.956.630-34
-
-Inválidos:
-  - 042.427.230-94
-  - 358.768.060-09
-  - 595.956.930-34
-
-Regra:  
-Dígitos comuns = 049.427.230  
-Dígitos validadores = 94
-*/
-
 class CpfValidation {
-  static validFirstDigit(String cpf) {
-    final String cpf = '04942723094';
+  static bool _validFirstDigit(String cpf) {
     num soma = 0;
+    String posicaoUm = cpf[0].toString();
+    String posicaoDois = cpf[1].toString();
+    String posicaoTres = cpf[2].toString();
+    String posicaoQuatro = cpf[3].toString();
+    String posicaoCinco = cpf[4].toString();
+    String posicaoSeis = cpf[5].toString();
+    String posicaoSete = cpf[6].toString();
+    String posicaoOito = cpf[7].toString();
+    String posicaoNove = cpf[8].toString();
 
-    for (var numIncial = 0; numIncial < 9; numIncial++) {
-      String cpfIndex = cpf[numIncial];
-      int cpfInt = int.parse(cpfIndex);
-      int resultadoMultiplier = (11 - numIncial);
-//  Somar o resultado da multiplicação pela ordem decrescente de 10 a 2;
-      soma += cpfInt * resultadoMultiplier;
-//  Multiplicar o resultado do passo 1 por 10 e posteriormente dividir por 11.
-      double resultDivider = soma / 11;
-      if (resultDivider < 10) {
-        return cpf[9] == resultDivider;
-      }
-      return cpf[9] == 0;
-// Caso o resto seja igual a 10 este deverá ser considerado como 0.
+    soma = soma + (int.parse(posicaoUm) * 10);
+    soma = soma + (int.parse(posicaoDois) * 9);
+    soma = soma + (int.parse(posicaoTres) * 8);
+    soma = soma + (int.parse(posicaoQuatro) * 7);
+    soma = soma + (int.parse(posicaoCinco) * 6);
+    soma = soma + (int.parse(posicaoSeis) * 5);
+    soma = soma + (int.parse(posicaoSete) * 4);
+    soma = soma + (int.parse(posicaoOito) * 3);
+    soma = soma + (int.parse(posicaoNove) * 2);
+
+    print(soma);
+    var multiplicacao = soma * 10;
+    var resto = multiplicacao % 11;
+    print(multiplicacao);
+    print(resto);
+    if (resto == 10) {
+      resto = 0;
     }
+    if (cpf[9] == resto.toString()) {
+      return true;
+    }
+    return false;
   }
 
-  static validSecondDigit(String second) {
-    final String cpf = '04942723094';
+  static _validSecondDigit(String cpf) {
     num soma = 0;
+    String posicaoUm = cpf[0].toString();
+    String posicaoDois = cpf[1].toString();
+    String posicaoTres = cpf[2].toString();
+    String posicaoQuatro = cpf[3].toString();
+    String posicaoCinco = cpf[4].toString();
+    String posicaoSeis = cpf[5].toString();
+    String posicaoSete = cpf[6].toString();
+    String posicaoOito = cpf[7].toString();
+    String posicaoNove = cpf[8].toString();
+    String posicaoDez = cpf[9].toString();
 
-    for (var numIncial = 0; numIncial < 9; numIncial++) {
-      String cpfIndex = cpf[numIncial];
-      int cpfInt = int.parse(cpfIndex);
-      int resultadoMultiplier = (11 - numIncial);
-// Somar o resultado da multiplicação dos 10 primeiros dígito pela ordem decrescente de 11 a 2;
-// considerar os 9 dígitos  + o digito já validado, interando um total de 10 algarismos para o calculo.
-      soma += cpfInt * resultadoMultiplier;
-// Multiplicar o resultado do passo 1, multiplicar por 10 e posteriormente dividir por 11.
-      double resultDivider = soma / 11;
-      if (resultDivider < 10) {
-        return cpf[10] == resultDivider;
-      }
-      return cpf[10] == 0;
+    soma = soma + (int.parse(posicaoUm) * 11);
+    soma = soma + (int.parse(posicaoDois) * 10);
+    soma = soma + (int.parse(posicaoTres) * 9);
+    soma = soma + (int.parse(posicaoQuatro) * 8);
+    soma = soma + (int.parse(posicaoCinco) * 7);
+    soma = soma + (int.parse(posicaoSeis) * 6);
+    soma = soma + (int.parse(posicaoSete) * 5);
+    soma = soma + (int.parse(posicaoOito) * 4);
+    soma = soma + (int.parse(posicaoNove) * 3);
+    soma = soma + (int.parse(posicaoDez) * 2);
+
+    print(soma);
+
+    var multiplicacao = soma * 10;
+    var resto = multiplicacao % 11;
+    print(multiplicacao);
+    print(resto);
+    if (resto == 10) {
+      resto = 0;
     }
+    if (cpf[10] == resto.toString()) {
+      return true;
+    }
+    return false;
   }
 
-/* Passo 3:  
-      O décimo primeiro digito será válido caso o resultado do passo 2 seja igual ao décimo primeiro digito.*/
-  static validarCpf(String cpf) {
-    if (validFirstDigit(cpf)) {
-      return false;
+  static bool validarCpf(String cpf) {
+    if (_validFirstDigit(cpf) && _validSecondDigit(cpf)) {
+      return true;
     }
-    if (validSecondDigit(cpf)) {
-      return false;
-    }
-    return true;
+    return false;
   }
 }
