@@ -86,18 +86,34 @@ main() {
   //   }
   // }
 
-  bool getBairro = false;
-  while (!getBairro) {
-    stdout.writeln('Digite o nome do seu bairro');
-    final inputBairro = stdin.readLineSync().toString();
-    if (inputBairro.isEmpty) {
-      print('O nome do bairro é requerido');
-    } else if (!RegExp(r'^[a-zA-Z]{3,}\ ?[a-zA-Z]{0,}?\ ?[a-zA-Z]{0,}?$')
-        .hasMatch(inputBairro)) {
+  // bool getBairro = false;
+  // while (!getBairro) {
+  //   stdout.writeln('Digite o nome do seu bairro');
+  //   final inputBairro = stdin.readLineSync().toString();
+  //   if (inputBairro.isEmpty) {
+  //     print('O nome do bairro é requerido');
+  //   } else if (!RegExp(r'^[a-zA-Z]{3,}\ ?[a-zA-Z]{0,}?\ ?[a-zA-Z]{0,}?$')
+  //       .hasMatch(inputBairro)) {
+  //     print('Digite corretamente');
+  //   } else {
+  //     stdout.writeln('A bairro digitado é: $inputBairro');
+  //     getBairro = true;
+  //   }
+  // }
+
+  bool getCidade = false;
+  while (!getCidade) {
+    stdout.writeln('Digite o nome da cidade');
+    final inputCidade = stdin.readLineSync().toString();
+    if (inputCidade.isEmpty) {
+      print('O nome da cidade é requerido');
+    } else if (!RegExp(
+            r'^[a-zA-Záãí]{3,}\ ?[a-zA-Záãí]{0,}?\ ?[a-zA-Záãí]{0,}?$')
+        .hasMatch(inputCidade)) {
       print('Digite corretamente');
     } else {
-      stdout.writeln('A bairro digitado é: $inputBairro');
-      getBairro = true;
+      stdout.writeln('A cidade digitada é: $inputCidade');
+      getCidade = true;
     }
   }
 }
