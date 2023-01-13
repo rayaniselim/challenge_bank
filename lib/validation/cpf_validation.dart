@@ -1,4 +1,23 @@
+import 'dart:io';
+
 class CpfValidation {
+  static cpfIsValid() {
+    bool cpfIsValid = false;
+    while (!cpfIsValid) {
+      stdout.writeln('Digite o seu cpf');
+      final inputCpf = stdin.readLineSync();
+      if (inputCpf!.isEmpty) {
+        print('\nO CPF é requerido');
+      } else if (!RegExp(r'^[0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2}$')
+          .hasMatch(inputCpf)) {
+        print('\nDigite corretamente');
+      } else {
+        stdout.writeln('\nO cpf digitado é: $inputCpf');
+        cpfIsValid = true;
+      }
+    }
+  }
+
   static bool _validFirstDigit(String cpf) {
     num soma = 0;
     String posicaoUm = cpf[0].toString();

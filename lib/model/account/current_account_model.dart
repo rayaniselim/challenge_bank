@@ -14,12 +14,12 @@ class CurrentAccountModel extends AccountModel {
 
   static criarContaCorrente(String numero) {
     int saldo = 0;
-    stdout.writeln('Por favor anote as suas informações bancarias');
-    stdout.writeln('A sua agencia é:');
+    stdout.writeln('\nPor favor anote as suas informações bancarias');
+    stdout.writeln('\nA sua agencia é:');
     stdout.writeln('O código do banco é: 013');
     var conta = Random.secure().nextInt(8000) * (200);
     stdout.writeln('O número da sua conta corrente é: $conta');
-    stdout.writeln('O saldo da sua conta corrente é: R\$ $saldo');
+    stdout.writeln('\nO saldo da sua conta corrente é: R\$ $saldo');
 /*
     * escolher o tipo do cartão
     * Caso ele tenha enviado uma renda mensal, deve ter a opção de crédito.
@@ -29,7 +29,7 @@ class CurrentAccountModel extends AccountModel {
   }
 
   static cartaoCredito() {
-    print('cartao de credito método');
+    print('\ncartao de credito método');
 
     /// chamar o while getRenda se for == true
     /// liberar a funcao crédito
@@ -37,7 +37,7 @@ class CurrentAccountModel extends AccountModel {
   }
 
   static cartaoDebito() {
-    print('cartao de debito da conta corrente');
+    print('\ncartao de debito da conta corrente');
 
     /// liberar somente o cartao de débito
   }
