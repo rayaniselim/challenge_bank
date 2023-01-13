@@ -13,13 +13,13 @@ class CurrentAccountModel extends AccountModel {
   ) : super('', '', '', '', 0, 0.0);
 
   static criarContaCorrente(String numero) {
-    var saldo = r'R$ 0.00';
+    int saldo = 0;
     stdout.writeln('Por favor anote as suas informações bancarias');
     stdout.writeln('A sua agencia é:');
     stdout.writeln('O código do banco é: 013');
     var conta = Random.secure().nextInt(8000) * (200);
     stdout.writeln('O número da sua conta corrente é: $conta');
-    stdout.writeln('O saldo da sua conta corrente é: $saldo');
+    stdout.writeln('O saldo da sua conta corrente é: R\$ $saldo');
 /*
     * escolher o tipo do cartão
     * Caso ele tenha enviado uma renda mensal, deve ter a opção de crédito.
