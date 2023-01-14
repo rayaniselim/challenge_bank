@@ -20,25 +20,7 @@ class CurrentAccountModel extends AccountModel {
     var conta = Random.secure().nextInt(8000) * (200);
     stdout.writeln('O número da sua conta corrente é: $conta');
     stdout.writeln('\nO saldo da sua conta corrente é: R\$ $saldo');
-/*
-    * escolher o tipo do cartão
-    * Caso ele tenha enviado uma renda mensal, deve ter a opção de crédito.
-    * Caso não tenha, o cartão só poderá ser de débito.
-*/
+
     /// mostrar cartao
-  }
-
-  static cartaoCredito() {
-    print('\ncartao de credito método');
-
-    /// chamar o while getRenda se for == true
-    /// liberar a funcao crédito
-    /// se nao, liberar somente o cartao de débito
-  }
-
-  static cartaoDebito() {
-    print('\ncartao de debito da conta corrente');
-
-    /// liberar somente o cartao de débito
   }
 }

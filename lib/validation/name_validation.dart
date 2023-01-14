@@ -15,7 +15,7 @@ class NameValidation {
 
   static nameIsValid() {
     bool nameIsValid = false;
-    late String? name;
+    late final String name;
     while (!nameIsValid) {
       stdout.writeln('Digite o seu nome completo'); // ln faz a quebra de linha
       name = stdin.readLineSync().toString();

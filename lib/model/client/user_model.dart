@@ -7,7 +7,7 @@ class UserModel {
   final String email;
   final String password;
   final AddressModel address;
-  final double? income; // renda
+  final double? incomeMonthy; // renda
 
   UserModel(
     this.name,
@@ -16,6 +16,6 @@ class UserModel {
     this.password,
     this.telephone,
     this.address,
-    this.income,
+    this.incomeMonthy,
   );
 }

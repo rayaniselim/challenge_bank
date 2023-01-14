@@ -4,15 +4,26 @@ import 'dart:math';
 import 'account_model.dart';
 
 class SavingsAccountModel extends AccountModel {
-  // Poupança
-
   final String? cardDebit; //somente débito
   final double income; // rendimento %
 
-  SavingsAccountModel(
+  SavingsAccountModel({
+    required String withdraw, // saque
+    required String deposit,
+    required String agency,
+    required String bank,
+    required int accountNumber,
+    required double balance,
     this.cardDebit,
-    this.income,
-  ) : super('', '', '', '', 0, 0.0);
+    required this.income,
+  }) : super(
+          withdraw,
+          deposit,
+          agency,
+          bank,
+          accountNumber,
+          balance,
+        );
 
   static criarContaPoupanca(String numero) {
     var saldo = r'R$ 0.00';
@@ -24,11 +35,5 @@ class SavingsAccountModel extends AccountModel {
     stdout.writeln('\nO saldo da sua conta poupança é: $saldo');
 
     /// mostrar cartao
-  }
-
-  static cartaoDebito() {
-    print('\ncartao de debito da conta poupança');
-
-    /// liberar somente o cartao de débito
   }
 }
