@@ -12,15 +12,14 @@ class CurrentAccountModel extends AccountModel {
     this.loan,
   ) : super('', '', '', '', 0, 0.0);
 
-  static criarContaCorrente(String numero) {
+  static bool criarContaCorrente(String numero) {
     int saldo = 0;
     stdout.writeln('\nPor favor anote as suas informações bancarias');
-    stdout.writeln('\nA sua agencia é:');
+    stdout.writeln('\nA sua agencia é:'); // TODO: ARRUMAR AGENCIA
     stdout.writeln('O código do banco é: 013');
-    var conta = Random.secure().nextInt(8000) * (200);
+    int conta = Random.secure().nextInt(8000) * (200);
     stdout.writeln('O número da sua conta corrente é: $conta');
     stdout.writeln('\nO saldo da sua conta corrente é: R\$ $saldo');
-
-    /// mostrar cartao
+    return true;
   }
 }
