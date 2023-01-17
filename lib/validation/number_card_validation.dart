@@ -41,6 +41,6 @@ class NumberCardValidation {
       return null;
     }
     return mastercard ?? visa;
-  } // TODO: ajustar para retornar só um método,
+  } // ajustar para retornar só um método,
   // nao mexer
 }

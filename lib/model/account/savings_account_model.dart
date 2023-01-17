@@ -25,15 +25,15 @@ class SavingsAccountModel extends AccountModel {
           balance,
         );
 
-  static criarContaPoupanca(String numero) {
+  static bool criarContaPoupanca(String numero) {
     var saldo = r'R$ 0.00';
     stdout.writeln('\nPor favor anote as suas informações bancarias');
-    stdout.writeln('\nA sua agencia é:');
+    int agencia = Random.secure().nextInt(80) * (20);
+    stdout.writeln('\nA sua agencia é: $agencia');
     stdout.writeln('O código do banco é: 013');
     var conta = Random.secure().nextInt(8000) * (200);
     stdout.writeln('O número da sua conta poupança é: $conta');
     stdout.writeln('\nO saldo da sua conta poupança é: $saldo');
-
-    /// mostrar cartao
+    return true;
   }
 }

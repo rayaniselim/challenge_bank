@@ -193,6 +193,7 @@ main() {
 
         break;
       case '2':
+        getCurrentAccount = inputConta == '2';
         stdout.writeln('\nVocê selecionou a conta poupança:');
         SavingsAccountModel.criarContaPoupanca(inputConta);
         stdout.writeln('\nCom ela você tem o direito ao Cartão de Débito');
@@ -214,7 +215,6 @@ main() {
         break;
     }
     getConta = true;
-    // }
   } while (!getConta);
 
   bool selectedMenuInteractive = true;
@@ -234,7 +234,6 @@ main() {
     } else {
       stdout.writeln('\nAcesso liberado');
     }
-    // MenuInteractive.menuInteractive(inputMenuInteractive);
     stdout.writeln('Selecione o número da opção que deseja:\n');
     stdout.writeln('1- Saque.');
     stdout.writeln('2- Depósito.');
@@ -258,6 +257,7 @@ main() {
         continue;
       }
     }
+
     double? valorDepositado = double.parse(theAmountDeposited.toString());
     switch (inputMenuInteractive) {
       case '1': // SAQUE
@@ -299,7 +299,6 @@ main() {
             '\nSaque realizado com sucesso \n saldo atual: R\$ $saldoRestante',
           );
         }
-
         break;
 
       case '2': // DEPÓSITO
@@ -320,7 +319,7 @@ main() {
 
       case '3': // EMPRESTIMO
         late double
-            amountBorrowedToPay; // TODO: valor emprestado a pagar no cartão
+            amountBorrowedToPay; // TODO: verificar valor emprestado a pagar no cartão
         String? inputLoan;
         stdout.writeln(
             '\nVocê gostaria de verificar a possibilidade de realizar emprestimo?');
@@ -335,8 +334,6 @@ main() {
           stdout.writeln(
               '\nParabéns foi liberada a possibilidade de empréstimo \n vamos verificar o valor disponivel.');
           stdout.writeln('\nAguarde um instante...');
-          // LIMITE
-          // double amountAvailableForLoan; valor disponivel para emprestimo
           double monthlyIncomeParse = double.parse(monthlyIncome!);
           var limitMax = (70 * monthlyIncomeParse / 100);
           var limitMin = (20 * monthlyIncomeParse / 100);
@@ -351,23 +348,80 @@ main() {
           if (amountRequestedForLoan >= limitMin &&
               amountRequestedForLoan <= limitMax) {
             stdout.writeln(
-                '\nO empréstimo no valor de R\$ $amountRequestedForLoan foi aceito');
+                '\nO empréstimo no valor de R\$$amountRequestedForLoan foi aceito\n');
           } else {
             stdout.writeln(
                 '\nO empréstimo no valor de R\$ $amountRequestedForLoan não foi aceito, tente outro valor abaixo de $limitMax');
             inputLoan = stdin.readLineSync().toString();
             continue;
           }
-          // TODO: ver se aparece na fatura cartão e vai usar o limite do cartão
+// TODO: ver se aparece na fatura cartão e vai usar o limite do cartão
           amountBorrowedToPay = amountRequestedForLoan;
           break;
-        } else {
+        } else if (inputLoan == '1' && wantInformMonthlyIncome == false ||
+            isCreateCurrentAccount == false && getCurrentAccount == false) {
           stdout.writeln(
               '\nSinto muito mas você não se qualifica para o empréstimo');
           stdout.writeln(
-              '\nUm dos motivos podem ser pela falta da declaração da renda ou não possuir conta corrente.');
+              '\nUm dos motivos podem ser pela falta da declaração da renda ou não possuir conta corrente.\n');
+        }
+        if (inputLoan == '2') {
+          stdout.writeln('\nEstá bem, vamos finalizar a parte do empréstimo.');
+          break;
         }
         selectedMenuInteractive = true;
+        break;
+
+      case '4': // RENDIMENTO
+        String? simulateThisValue;
+        String? simulateDays;
+        // late bool isCurrentAcount =
+        //     (isCreateCurrentAccount == true && getCurrentAccount == true);
+        // late bool notIsCurrentAcount =
+        //     (isCreateCurrentAccount == false && getCurrentAccount == false);
+//// TODO: Quando eu quero ver se é falso ele dá erro no late, ou seja,
+        /// o if só funciona quando o resultado é true, se for false, ele nao vai para o else
+        // if (isCreateCurrentAccount == true && getCurrentAccount == true) {
+        //   stdout.writeln('Este serviço só está disponivel para conta poupança');
+        // }
+        // if (notIsCurrentAcount)
+        // else {
+        stdout.writeln('\nBem vindo à simulação de rendimentos');
+        stdout.writeln(
+            'Lembrando que este serviço só é valido para conta poupança.\n');
+        stdout.writeln('Qual o valor você gostaria de simular?.\n');
+        simulateThisValue = stdin.readLineSync().toString();
+        stdout.writeln('No prazo de quantos dias você gostaria de simular?.\n');
+        simulateDays = stdin.readLineSync().toString();
+        stdout.writeln('\nOk.');
+        stdout.writeln('Aguarde um instante...');
+        double valueSimulateInput = double.parse(simulateThisValue);
+        int simulateDaysInput = int.parse(simulateDays);
+
+        double simlation = (2 * valueSimulateInput / 100);
+
+        double resultSimulateInput = (simlation * simulateDaysInput);
+        double halfTimeSimulation =
+            (simlation * simulateDaysInput / 2); // metade do tempo
+        double doubleTimeSimulation = (simlation *
+            (simulateDaysInput + simulateDaysInput)); // dobro do tempo
+
+        stdout.writeln('Aguarde um instante...');
+        stdout.writeln(
+            'Com o prazo e valor estipulado o seu dinheiro renderá $resultSimulateInput.');
+        stdout.writeln(
+            '\nMas também fizemos um calculo extra para demonstração:');
+        stdout.writeln('\n- O seu dinheiro renderá R\$$simlation por dia.');
+        stdout.writeln(
+            '- Com a metade do prazo o seu dinheiro renderá R\$$halfTimeSimulation');
+        stdout.writeln(
+            '- Com o dobro do prazo o seu dinheiro renderá R\$$doubleTimeSimulation');
+        stdout.writeln('\nLembrando que o seu dinheiro rende 2% ao dia.');
+        stdout.writeln('\nEstamos finalizando a simulação.\n');
+        break;
+      // }
     }
   } while (selectedMenuInteractive);
 }
+
+// 12345678

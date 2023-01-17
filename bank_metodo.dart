@@ -10,7 +10,7 @@ Caso a conta seja poupança, o dinheiro pode render.
   * Deve ser enviado uma quantidade de dias.
   * Baseado nesse tempo, devem ser feitos 3 cálculos.
     * Metade do tempo
-    * Tempo alvo
+    * Tempo alvor
     * Dobro do tempo.
   * O dinheiro rende 2% ao dia.
 
