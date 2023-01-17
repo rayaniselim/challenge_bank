@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'dart:math';
+import 'package:app_bank/model/account/card/card_debito_model.dart';
+import 'package:app_bank/model/account/card/card_full_model.dart';
 import 'package:app_bank/model/account/current_account_model.dart';
 import 'package:app_bank/model/account/savings_account_model.dart';
 import 'package:app_bank/validation/address_validation.dart';
@@ -122,20 +124,7 @@ main() {
         if (inputCartao == '1' && wantInformMonthlyIncome == true) {
           stdout.writeln('\nVocê selecionou o cartão crédito e débito:');
           stdout.writeln('\nParabéns foi liberado o cartão crédito e débito');
-
-          String flag = 'Visa';
-          int cvv = Random.secure().nextInt(8) * (20);
-          String expirationDate = '2033-01';
-          wantInformName = wantInformName;
-          int number = Random.secure().nextInt(999999999) * (999999999);
-
-          stdout.writeln(
-              '\nPor favor anote as informações do seu Cartão de Crédito');
-          stdout.writeln('\nO nome no cartão será: $wantInformName');
-          stdout.writeln('\nA bandeira é: $flag');
-          stdout.writeln('\nO código cvv do seu cartão é: $cvv');
-          stdout.writeln('\nO número do seu cartão é: $number');
-          stdout.writeln('\nO validade do seu cartão é: $expirationDate');
+          CardFull.cardFullMethod(wantInformName);
 
           // LIMITE
           double monthyIncome = double.parse(monthlyIncome!);
@@ -160,58 +149,19 @@ main() {
         if (inputCartao == '1' && wantInformMonthlyIncome == false) {
           stdout.writeln(
               '\nComo você não informou a renda só podemos liberar o cartão de debito');
-          String flag = 'Mastercard';
-          int cvv = Random.secure().nextInt(8) * (20);
-          String expirationDate = '2033-01';
-          wantInformName = wantInformName;
-          int number = Random.secure().nextInt(999999999) * (999999999);
-          stdout.writeln(
-              '\nPor favor anote as informações do seu Cartão de Débito');
-          stdout.writeln('\nO nome no cartão será: $wantInformName');
-          stdout.writeln('\nA bandeira é: $flag');
-          stdout.writeln('\nO código cvv do seu cartão é: $cvv');
-          stdout.writeln('\nO número do seu cartão é: $number');
-          stdout.writeln('\nO validade do seu cartão é: $expirationDate');
-          stdout.writeln('\nO valor do saldo é: R\$0.00 ');
+          if (inputCartao == '2') {
+            CardDebitoModel.cardDebito(wantInformName);
+            break;
+          }
         }
-        if (inputCartao == '2') {
-          stdout.writeln('\nVocê selecionou o cartão de débito:');
-          String flag = 'Mastercard';
-          int cvv = Random.secure().nextInt(8) * (20);
-          String expirationDate = '2033-01';
-          wantInformName = wantInformName;
-          int number = Random.secure().nextInt(999999999) * (999999999);
-          stdout.writeln(
-              '\nPor favor anote as informações do seu Cartão de Débito');
-          stdout.writeln('\nO nome no cartão será: $wantInformName');
-          stdout.writeln('\nA bandeira é: $flag');
-          stdout.writeln('\nO código cvv do seu cartão é: $cvv');
-          stdout.writeln('\nO número do seu cartão é: $number');
-          stdout.writeln('\nO validade do seu cartão é: $expirationDate');
-          stdout.writeln('\nO valor do saldo é: R\$0.00 ');
-        }
-
         break;
+
       case '2':
         getCurrentAccount = inputConta == '2';
         stdout.writeln('\nVocê selecionou a conta poupança:');
         SavingsAccountModel.criarContaPoupanca(inputConta);
         stdout.writeln('\nCom ela você tem o direito ao Cartão de Débito');
-
-        String flag = 'Mastercard';
-        int cvv = Random.secure().nextInt(8) * (20);
-        String expirationDate = '2033-01';
-        wantInformName = wantInformName;
-        int number = Random.secure().nextInt(999999999) * (999999999);
-        stdout.writeln(
-            '\nPor favor anote as informações do seu Cartão de Débito');
-        stdout.writeln('\nO nome no cartão será: $wantInformName');
-        stdout.writeln('\nA bandeira é: $flag');
-        stdout.writeln('O código cvv do seu cartão é: $cvv');
-        stdout.writeln('O número do seu cartão é: $number');
-        stdout.writeln('O validade do seu cartão é: $expirationDate');
-        stdout.writeln('O valor do saldo é: R\$0.00 ');
-
+        CardDebitoModel.cardDebito(wantInformName);
         break;
     }
     getConta = true;
@@ -264,7 +214,7 @@ main() {
         bool aquiVaiPassarOValorDeSaque = false;
         do {
           stdout.writeln(
-              '\nO seu saldo disponivel é: $valorDepositado '); //pegar do deposito
+              '\nO seu saldo disponivel é: R\$$valorDepositado '); //pegar do deposito
           stdout.writeln('\nFavor digite o valor que deseja sacar:');
           requestedAmount = stdin.readLineSync().toString();
           aquiVaiPassarOValorDeSaque =
@@ -273,7 +223,7 @@ main() {
             print('\nDigite somente números e pontos');
           }
         } while (!aquiVaiPassarOValorDeSaque);
-        stdout.writeln('\nO valor solicitado é: R\$ $requestedAmount');
+        stdout.writeln('\nO valor solicitado é: R\$$requestedAmount');
 
         double requestedAmountParse = double.parse(requestedAmount);
         double saldoRestante = (valorDepositado - requestedAmountParse);
@@ -282,14 +232,7 @@ main() {
               '\nVocê não tem saldo suficiente para essa transação \n saldo atual: R\$ $valorDepositado.');
           stdout.writeln(
               '\nTente novamente mais tarde após realizar um depósito em sua conta.');
-          stdout.writeln('\nDeseja voltar ao menu interativo?');
-          stdout.writeln('\nSe sim, digite 0 se não digite SAIR');
-          final backMenuInteractive = stdin.readLineSync().toString();
-          if (backMenuInteractive == '0') {
-            selectedMenuInteractive;
-          } else {
-            break;
-          }
+
           break;
         } else if (valorDepositado < requestedAmountParse) {
           stdout.writeln('\nTente um valor menor de R\$ $valorDepositado:');
@@ -420,6 +363,42 @@ main() {
         stdout.writeln('\nEstamos finalizando a simulação.\n');
         break;
       // }
+      case '5': //Realizar Pagamentos com Débito.
+        String? valueToPay; // valor a pagar
+        double? valorDepositado = double.parse(theAmountDeposited.toString());
+        bool amountIWantToPay = false;
+        do {
+          stdout.writeln('\nVocê está na área de pagamento');
+          stdout.writeln('\nO seu saldo disponivel é: R\$$valorDepositado ');
+          stdout.writeln('\nQual valor você deseja pagar?');
+          valueToPay = stdin.readLineSync().toString();
+          double? valuePayParse = double.parse(valueToPay.toString());
+          amountIWantToPay = RegExp(r'^[0-9.]{1,}$').hasMatch(valueToPay);
+          if (!amountIWantToPay) {
+            print('\nDigite somente números e pontos');
+          }
+        } while (!amountIWantToPay);
+        stdout.writeln('\nO valor solicitado para pagamento é: R\$$valueToPay');
+
+        double requestedAmountParse = double.parse(valueToPay);
+        double saldoRestante = (valorDepositado - requestedAmountParse);
+        if (valorDepositado == 0.0) {
+          stdout.writeln(
+              '\nVocê não tem saldo suficiente para essa transação \n saldo atual: R\$ $valorDepositado.');
+          stdout.writeln(
+              '\nTente novamente mais tarde após realizar um depósito em sua conta.');
+
+          break;
+        } else if (valorDepositado < requestedAmountParse) {
+          stdout.writeln(
+              '\nTente pagar uma connta com o valor abaixo de R\$ $valorDepositado:');
+          valueToPay = stdin.readLineSync().toString();
+        } else if (valorDepositado > requestedAmountParse) {
+          stdout.writeln(
+            '\nPagamento realizado com sucesso \n saldo atual: R\$ $saldoRestante',
+          );
+        }
+        break;
     }
   } while (selectedMenuInteractive);
 }
