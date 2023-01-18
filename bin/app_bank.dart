@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 import 'package:app_bank/model/account/card/card_debito_model.dart';
 import 'package:app_bank/model/account/card/card_full_model.dart';
 import 'package:app_bank/model/account/current_account_model.dart';
@@ -10,12 +9,13 @@ import 'package:app_bank/validation/email_validation.dart';
 import 'package:app_bank/validation/name_validation.dart';
 import 'package:app_bank/validation/password_validation.dart';
 import 'package:app_bank/validation/telephone_validation.dart';
-import 'package:test/expect.dart';
 
 // while (condicao) { o loop só vai iniciar se a condicao for verdadeira}
 
 // do { aqui ele inicia  a condicao
 // } while (e depois ele pergunta); se o loop for falso, ele executa pelo menos uma vez
+
+// 12345678
 
 main() {
   bool nameIsValid = false;
@@ -28,9 +28,10 @@ main() {
       stdout.writeln('\nO nome digitado é: $wantInformName');
     }
   } while (!nameIsValid);
-  // EmailValidation.emailIsValid();
-  // TelephoneValidation.telephoneIsValid();
-  // CpfValidation.cpfIsValid();
+
+  EmailValidation.emailIsValid();
+  TelephoneValidation.telephoneIsValid();
+  CpfValidation.cpfIsValid();
 
   bool passwordIsValid = false;
   late String? inputPassword;
@@ -42,13 +43,14 @@ main() {
       stdout.writeln('\nA senha digitada é: $inputPassword');
     }
   } while (!passwordIsValid);
-  // AddressValidation.cepIsValid();
-  // AddressValidation.streetIsValid();
-  // AddressValidation.districtIsValid();
-  // AddressValidation.cityIsValid();
-  // AddressValidation.stateIsValid();
-  // AddressValidation.numberIsValid();
-  // AddressValidation.complementIsValid();
+
+  AddressValidation.cepIsValid();
+  AddressValidation.streetIsValid();
+  AddressValidation.districtIsValid();
+  AddressValidation.cityIsValid();
+  AddressValidation.stateIsValid();
+  AddressValidation.numberIsValid();
+  AddressValidation.complementIsValid();
 
   bool monthlyIncomeIsInformed = true;
   late bool wantInformMonthlyIncome;
@@ -178,7 +180,6 @@ main() {
   String? requestedAmount; //valor solicitado
   late double amountBorrowedToPay;
   double amountRequestedForLoan = 0;
-// AQUI
 
   do {
     stdout.writeln('Você está no menu interativo');
