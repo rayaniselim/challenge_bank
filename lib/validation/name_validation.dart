@@ -5,8 +5,9 @@ class NameValidation {
     if (name == null || name.isEmpty) {
       return false;
     }
-    if (!RegExp(r'^([a-zA-Z]{3,})([a-zA-Z]{3,})\ ?([a-zA-Z]{3,})+$')
-        .hasMatch(name.trim())) {
+    if (!RegExp(
+            r'^([a-zA-Z]{3,10})\ ?([a-zA-Z]{3,15})\ ?([a-zA-Z]{3,15})?\ ?([a-zA-Z]{3,15})?$')
+        .hasMatch(name)) {
       return false;
     } else {
       return true;
