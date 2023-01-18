@@ -10,6 +10,7 @@ import 'package:app_bank/validation/email_validation.dart';
 import 'package:app_bank/validation/name_validation.dart';
 import 'package:app_bank/validation/password_validation.dart';
 import 'package:app_bank/validation/telephone_validation.dart';
+import 'package:test/expect.dart';
 
 // while (condicao) { o loop só vai iniciar se a condicao for verdadeira}
 
@@ -30,7 +31,6 @@ main() {
   // EmailValidation.emailIsValid();
   // TelephoneValidation.telephoneIsValid();
   // CpfValidation.cpfIsValid();
-  // PasswordValidation.passwordIsValid();
 
   bool passwordIsValid = false;
   late String? inputPassword;
@@ -96,6 +96,10 @@ main() {
   bool getConta = false;
   late bool getCurrentAccount;
   late bool isCreateCurrentAccount;
+  late bool isCardFullValid;
+  late String result;
+  late double limit;
+
   do {
     stdout.writeln('Digite qual conta você gostaria de abrir:');
     stdout.writeln('\n1- Conta Corrente.');
@@ -124,31 +128,34 @@ main() {
         if (inputCartao == '1' && wantInformMonthlyIncome == true) {
           stdout.writeln('\nVocê selecionou o cartão crédito e débito:');
           stdout.writeln('\nParabéns foi liberado o cartão crédito e débito');
-          CardFull.cardFullMethod(wantInformName);
+          isCardFullValid = CardFull.cardFullMethod(wantInformName);
 
           // LIMITE
           double monthyIncome = double.parse(monthlyIncome!);
           if (monthyIncome <= 1000) {
-            var limit = (10 * monthyIncome / 100);
-            stdout.writeln('O seu limite é de $limit');
+            limit = (10 * monthyIncome / 100);
+            result = 'O seu limite é de $limit';
           } else if (monthyIncome <= 2500) {
-            var limit = (25 * monthyIncome / 100);
-            stdout.writeln('O seu limite é de $limit');
+            limit = (25 * monthyIncome / 100);
+            print(result = ('O seu limite é de $limit'));
           } else if (monthyIncome <= 5000) {
-            var limit = (40 * monthyIncome / 100);
+            limit = (40 * monthyIncome / 100);
             stdout.writeln('O seu limite é de $limit');
           } else if (monthyIncome <= 10000) {
-            var limit = (60 * monthyIncome / 100);
+            limit = (60 * monthyIncome / 100);
             stdout.writeln('O seu limite é de  $limit');
           } else if (monthyIncome > 10000) {
-            var limit = (75 * monthyIncome / 100);
+            limit = (75 * monthyIncome / 100);
             stdout.writeln('O seu limite é de  $limit');
           }
           stdout.writeln('\nO valor gasto é: R\$0.00 ');
+
+          /// TODO: criar var para o saldo do cartao
         }
         if (inputCartao == '1' && wantInformMonthlyIncome == false) {
           stdout.writeln(
               '\nComo você não informou a renda só podemos liberar o cartão de debito');
+          CardDebitoModel.cardDebito(wantInformName);
           if (inputCartao == '2') {
             CardDebitoModel.cardDebito(wantInformName);
             break;
@@ -171,6 +178,8 @@ main() {
   String? inputMenuInteractive;
   String theAmountDeposited = '0';
   String? requestedAmount; //valor solicitado
+  late double amountBorrowedToPay;
+  late double amountRequestedForLoan;
 
   do {
     stdout.writeln('Você está no menu interativo');
@@ -231,7 +240,7 @@ main() {
           stdout.writeln(
               '\nVocê não tem saldo suficiente para essa transação \n saldo atual: R\$ $valorDepositado.');
           stdout.writeln(
-              '\nTente novamente mais tarde após realizar um depósito em sua conta.');
+              '\nTente novamente mais tarde após realizar um depósito em sua conta.\n');
 
           break;
         } else if (valorDepositado < requestedAmountParse) {
@@ -261,8 +270,10 @@ main() {
         break;
 
       case '3': // EMPRESTIMO
-        late double
-            amountBorrowedToPay; // TODO: verificar valor emprestado a pagar no cartão
+
+        // late double
+        //     amountBorrowedToPay; // TODO: verificar valor emprestado a pagar no cartão
+        // late double amountRequestedForLoan;
         String? inputLoan;
         stdout.writeln(
             '\nVocê gostaria de verificar a possibilidade de realizar emprestimo?');
@@ -286,7 +297,7 @@ main() {
               '\nO seu limite minimo para empréstimo é de R\$ $limitMin');
           stdout.writeln('\nDigite o valor que você gostaria de emprestar:');
           inputLoan = stdin.readLineSync().toString();
-          double amountRequestedForLoan = double.parse(inputLoan);
+          amountRequestedForLoan = double.parse(inputLoan);
 
           if (amountRequestedForLoan >= limitMin &&
               amountRequestedForLoan <= limitMax) {
@@ -298,7 +309,7 @@ main() {
             inputLoan = stdin.readLineSync().toString();
             continue;
           }
-// TODO: ver se aparece na fatura cartão e vai usar o limite do cartão
+
           amountBorrowedToPay = amountRequestedForLoan;
           break;
         } else if (inputLoan == '1' && wantInformMonthlyIncome == false ||
@@ -341,12 +352,12 @@ main() {
         double valueSimulateInput = double.parse(simulateThisValue);
         int simulateDaysInput = int.parse(simulateDays);
 
-        double simlation = (2 * valueSimulateInput / 100);
+        double simulation = (2 * valueSimulateInput / 100);
 
-        double resultSimulateInput = (simlation * simulateDaysInput);
+        double resultSimulateInput = (simulation * simulateDaysInput);
         double halfTimeSimulation =
-            (simlation * simulateDaysInput / 2); // metade do tempo
-        double doubleTimeSimulation = (simlation *
+            (simulation * simulateDaysInput / 2); // metade do tempo
+        double doubleTimeSimulation = (simulation *
             (simulateDaysInput + simulateDaysInput)); // dobro do tempo
 
         stdout.writeln('Aguarde um instante...');
@@ -354,7 +365,7 @@ main() {
             'Com o prazo e valor estipulado o seu dinheiro renderá $resultSimulateInput.');
         stdout.writeln(
             '\nMas também fizemos um calculo extra para demonstração:');
-        stdout.writeln('\n- O seu dinheiro renderá R\$$simlation por dia.');
+        stdout.writeln('\n- O seu dinheiro renderá R\$$simulation por dia.');
         stdout.writeln(
             '- Com a metade do prazo o seu dinheiro renderá R\$$halfTimeSimulation');
         stdout.writeln(
@@ -399,7 +410,51 @@ main() {
           );
         }
         break;
+      case '6': // PAGAMENTO COM CRÉDITO
+        double? valuePayParse;
+        String? valueToPayCredit; // valor a pagar
+        bool amountIWantToPay = false;
+        // if (isCardFullValid == false) {
+        //   return stdout.writeln(
+        //     '\nEssa opção só está disponível para quem tem cartão de crédito.\n',
+        //   );
+        // } else {
+        do {
+          stdout.writeln('\nVocê está na área de pagamento');
+          // double limitDisponivel = (limit - amountBorrowedToPay);
+
+          double limitDisponivel = (limit - amountRequestedForLoan);
+
+          stdout.writeln('\nO seu limite disponível é $limitDisponivel ');
+          stdout.writeln('\nQual valor você deseja pagar?');
+          valueToPayCredit = stdin.readLineSync().toString();
+          valuePayParse = double.parse(valueToPayCredit.toString());
+          amountIWantToPay = RegExp(r'^[0-9.]{1,}$').hasMatch(valueToPayCredit);
+          if (!amountIWantToPay) {
+            print('\nDigite somente números e pontos');
+          }
+        } while (!amountIWantToPay);
+        stdout.writeln(
+            '\nO valor solicitado para pagamento é: R\$$valuePayParse');
+        double limitDisponivel = (limit - amountBorrowedToPay);
+
+        double saldoRestante = (limitDisponivel - valuePayParse);
+        if (limitDisponivel == 0.0 || limitDisponivel < 0) {
+          stdout.writeln(
+              '\nVocê não tem saldo suficiente para essa transação \nsaldo atual: R\$ $limitDisponivel.');
+          break;
+        } else if (limitDisponivel < valuePayParse) {
+          stdout.writeln(
+              '\nTente pagar uma connta com o valor abaixo de R\$ $limitDisponivel:');
+          valueToPayCredit = stdin.readLineSync().toString();
+        } else if (limitDisponivel > valuePayParse) {
+          stdout.writeln(
+            '\nPagamento realizado com sucesso \nlimite atual: R\$ $saldoRestante\n',
+          );
+        }
+        break;
     }
+    // }
   } while (selectedMenuInteractive);
 }
 

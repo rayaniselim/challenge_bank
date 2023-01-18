@@ -4,14 +4,14 @@ class AddressValidation {
   static cepIsValid() {
     bool cepIsValid = false;
     while (!cepIsValid) {
-      stdout.writeln('\nDigite o seu cep');
+      stdout.writeln('\nDigite o seu CEP');
       final inputCep = stdin.readLineSync().toString();
       if (inputCep.isEmpty) {
-        print('\nO cep é requerido');
+        print('\nO CEP é requerido');
       } else if (!RegExp(r'^[0-9]{5}\-?[0-9]{3}$').hasMatch(inputCep)) {
-        print('\nDigite corretamente');
+        print('\nDigite corretamente o seu CEP');
       } else {
-        stdout.writeln('\nO cep digitado é: $inputCep');
+        stdout.writeln('\nO CEP digitado é: $inputCep');
         cepIsValid = true;
       }
     }
@@ -111,7 +111,7 @@ class AddressValidation {
       stdout.writeln('\nDigite o complemento');
       final inputComplemento = stdin.readLineSync();
       if (inputComplemento == null || inputComplemento.isEmpty) {
-        /// TODO: passar um print aqui
+        print('O complemento não será informado');
         true;
       } else if (!RegExp(
               r'^[a-zA-Záãí0-9]{3,}\ ?[a-zA-Záãí0-9]{0,}?\ ?[a-zA-Záãí0-9]{0,}?$')

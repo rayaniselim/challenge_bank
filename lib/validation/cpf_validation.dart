@@ -10,7 +10,7 @@ class CpfValidation {
         print('\nO CPF é requerido');
       } else if (!RegExp(r'^[0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2}$')
           .hasMatch(inputCpf)) {
-        print('\nDigite corretamente');
+        print('\nDigite corretamente o seu cpf');
       } else {
         stdout.writeln('\nO cpf digitado é: $inputCpf');
         cpfIsValid = true;
