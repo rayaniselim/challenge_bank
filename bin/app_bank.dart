@@ -95,7 +95,7 @@ main() {
 
   bool getConta = false;
   late bool getCurrentAccount;
-  late bool isCreateCurrentAccount;
+  bool isCreateCurrentAccount = false;
   late bool isCardFullValid;
   late String result;
   late double limit;
@@ -329,51 +329,49 @@ main() {
       case '4': // RENDIMENTO
         String? simulateThisValue;
         String? simulateDays;
-        // late bool isCurrentAcount =
-        //     (isCreateCurrentAccount == true && getCurrentAccount == true);
-        // late bool notIsCurrentAcount =
-        //     (isCreateCurrentAccount == false && getCurrentAccount == false);
-//// TODO: Quando eu quero ver se é falso ele dá erro no late, ou seja,
-        /// o if só funciona quando o resultado é true, se for false, ele nao vai para o else
-        // if (isCreateCurrentAccount == true && getCurrentAccount == true) {
-        //   stdout.writeln('Este serviço só está disponivel para conta poupança');
-        // }
-        // if (notIsCurrentAcount)
-        // else {
-        stdout.writeln('\nBem vindo à simulação de rendimentos');
-        stdout.writeln(
-            'Lembrando que este serviço só é valido para conta poupança.\n');
-        stdout.writeln('Qual o valor você gostaria de simular?.\n');
-        simulateThisValue = stdin.readLineSync().toString();
-        stdout.writeln('No prazo de quantos dias você gostaria de simular?.\n');
-        simulateDays = stdin.readLineSync().toString();
-        stdout.writeln('\nOk.');
-        stdout.writeln('Aguarde um instante...');
-        double valueSimulateInput = double.parse(simulateThisValue);
-        int simulateDaysInput = int.parse(simulateDays);
+        bool isCurrentAcount =
+            (isCreateCurrentAccount == true && getCurrentAccount == true);
+        bool notIsCurrentAcount =
+            (isCreateCurrentAccount == false && getCurrentAccount == false);
+        if (isCurrentAcount == true) {
+          stdout.writeln('Este serviço só está disponivel para conta poupança');
+        } else if (notIsCurrentAcount == false) {
+          stdout.writeln('\nBem vindo à simulação de rendimentos');
+          stdout.writeln(
+              'Lembrando que este serviço só é valido para conta poupança.\n');
+          stdout.writeln('Qual o valor você gostaria de simular?.\n');
+          simulateThisValue = stdin.readLineSync().toString();
+          stdout
+              .writeln('No prazo de quantos dias você gostaria de simular?.\n');
+          simulateDays = stdin.readLineSync().toString();
+          stdout.writeln('\nOk.');
+          stdout.writeln('Aguarde um instante...');
+          double valueSimulateInput = double.parse(simulateThisValue);
+          int simulateDaysInput = int.parse(simulateDays);
 
-        double simulation = (2 * valueSimulateInput / 100);
+          double simulation = (2 * valueSimulateInput / 100);
 
-        double resultSimulateInput = (simulation * simulateDaysInput);
-        double halfTimeSimulation =
-            (simulation * simulateDaysInput / 2); // metade do tempo
-        double doubleTimeSimulation = (simulation *
-            (simulateDaysInput + simulateDaysInput)); // dobro do tempo
+          double resultSimulateInput = (simulation * simulateDaysInput);
+          double halfTimeSimulation =
+              (simulation * simulateDaysInput / 2); // metade do tempo
+          double doubleTimeSimulation = (simulation *
+              (simulateDaysInput + simulateDaysInput)); // dobro do tempo
 
-        stdout.writeln('Aguarde um instante...');
-        stdout.writeln(
-            'Com o prazo e valor estipulado o seu dinheiro renderá $resultSimulateInput.');
-        stdout.writeln(
-            '\nMas também fizemos um calculo extra para demonstração:');
-        stdout.writeln('\n- O seu dinheiro renderá R\$$simulation por dia.');
-        stdout.writeln(
-            '- Com a metade do prazo o seu dinheiro renderá R\$$halfTimeSimulation');
-        stdout.writeln(
-            '- Com o dobro do prazo o seu dinheiro renderá R\$$doubleTimeSimulation');
-        stdout.writeln('\nLembrando que o seu dinheiro rende 2% ao dia.');
-        stdout.writeln('\nEstamos finalizando a simulação.\n');
+          stdout.writeln('Aguarde um instante...');
+          stdout.writeln(
+              'Com o prazo e valor estipulado o seu dinheiro renderá $resultSimulateInput.');
+          stdout.writeln(
+              '\nMas também fizemos um calculo extra para demonstração:');
+          stdout.writeln('\n- O seu dinheiro renderá R\$$simulation por dia.');
+          stdout.writeln(
+              '- Com a metade do prazo o seu dinheiro renderá R\$$halfTimeSimulation');
+          stdout.writeln(
+              '- Com o dobro do prazo o seu dinheiro renderá R\$$doubleTimeSimulation');
+          stdout.writeln('\nLembrando que o seu dinheiro rende 2% ao dia.');
+          stdout.writeln('\nEstamos finalizando a simulação.\n');
+          break;
+        }
         break;
-      // }
       case '5': //Realizar Pagamentos com Débito.
         String? valueToPay; // valor a pagar
         double? valorDepositado = double.parse(theAmountDeposited.toString());
@@ -421,8 +419,6 @@ main() {
         // } else {
         do {
           stdout.writeln('\nVocê está na área de pagamento');
-          // double limitDisponivel = (limit - amountBorrowedToPay);
-
           double limitDisponivel = (limit - amountRequestedForLoan);
 
           stdout.writeln('\nO seu limite disponível é $limitDisponivel ');
