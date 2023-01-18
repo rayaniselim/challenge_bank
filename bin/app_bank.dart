@@ -96,7 +96,7 @@ main() {
   bool getConta = false;
   late bool getCurrentAccount;
   bool isCreateCurrentAccount = false;
-  late bool isCardFullValid;
+  bool isCardFullValid = false;
   late String result;
   late double limit;
 
@@ -149,8 +149,6 @@ main() {
             stdout.writeln('O seu limite é de  $limit');
           }
           stdout.writeln('\nO valor gasto é: R\$0.00 ');
-
-          /// TODO: criar var para o saldo do cartao
         }
         if (inputCartao == '1' && wantInformMonthlyIncome == false) {
           stdout.writeln(
@@ -179,7 +177,8 @@ main() {
   String theAmountDeposited = '0';
   String? requestedAmount; //valor solicitado
   late double amountBorrowedToPay;
-  late double amountRequestedForLoan;
+  double amountRequestedForLoan = 0;
+// AQUI
 
   do {
     stdout.writeln('Você está no menu interativo');
@@ -270,10 +269,6 @@ main() {
         break;
 
       case '3': // EMPRESTIMO
-
-        // late double
-        //     amountBorrowedToPay; // TODO: verificar valor emprestado a pagar no cartão
-        // late double amountRequestedForLoan;
         String? inputLoan;
         stdout.writeln(
             '\nVocê gostaria de verificar a possibilidade de realizar emprestimo?');
@@ -412,45 +407,46 @@ main() {
         double? valuePayParse;
         String? valueToPayCredit; // valor a pagar
         bool amountIWantToPay = false;
-        // if (isCardFullValid == false) {
-        //   return stdout.writeln(
-        //     '\nEssa opção só está disponível para quem tem cartão de crédito.\n',
-        //   );
-        // } else {
-        do {
-          stdout.writeln('\nVocê está na área de pagamento');
-          double limitDisponivel = (limit - amountRequestedForLoan);
-
-          stdout.writeln('\nO seu limite disponível é $limitDisponivel ');
-          stdout.writeln('\nQual valor você deseja pagar?');
-          valueToPayCredit = stdin.readLineSync().toString();
-          valuePayParse = double.parse(valueToPayCredit.toString());
-          amountIWantToPay = RegExp(r'^[0-9.]{1,}$').hasMatch(valueToPayCredit);
-          if (!amountIWantToPay) {
-            print('\nDigite somente números e pontos');
-          }
-        } while (!amountIWantToPay);
-        stdout.writeln(
-            '\nO valor solicitado para pagamento é: R\$$valuePayParse');
-        double limitDisponivel = (limit - amountBorrowedToPay);
-
-        double saldoRestante = (limitDisponivel - valuePayParse);
-        if (limitDisponivel == 0.0 || limitDisponivel < 0) {
-          stdout.writeln(
-              '\nVocê não tem saldo suficiente para essa transação \nsaldo atual: R\$ $limitDisponivel.');
-          break;
-        } else if (limitDisponivel < valuePayParse) {
-          stdout.writeln(
-              '\nTente pagar uma connta com o valor abaixo de R\$ $limitDisponivel:');
-          valueToPayCredit = stdin.readLineSync().toString();
-        } else if (limitDisponivel > valuePayParse) {
-          stdout.writeln(
-            '\nPagamento realizado com sucesso \nlimite atual: R\$ $saldoRestante\n',
+        if (isCardFullValid == false) {
+          return stdout.writeln(
+            '\nEssa opção só está disponível para quem tem cartão de crédito.\n',
           );
+        } else {
+          do {
+            stdout.writeln('\nVocê está na área de pagamento');
+            double limitDisponivel = (limit - amountRequestedForLoan);
+
+            stdout.writeln('\nO seu limite disponível é $limitDisponivel ');
+            stdout.writeln('\nQual valor você deseja pagar?');
+            valueToPayCredit = stdin.readLineSync().toString();
+            valuePayParse = double.parse(valueToPayCredit.toString());
+            amountIWantToPay =
+                RegExp(r'^[0-9.]{1,}$').hasMatch(valueToPayCredit);
+            if (!amountIWantToPay) {
+              print('\nDigite somente números e pontos');
+            }
+          } while (!amountIWantToPay);
+          stdout.writeln(
+              '\nO valor solicitado para pagamento é: R\$$valuePayParse');
+          double limitDisponivel = (limit - amountBorrowedToPay);
+
+          double saldoRestante = (limitDisponivel - valuePayParse);
+          if (limitDisponivel == 0.0 || limitDisponivel < 0) {
+            stdout.writeln(
+                '\nVocê não tem saldo suficiente para essa transação \nsaldo atual: R\$ $limitDisponivel.');
+            break;
+          } else if (limitDisponivel < valuePayParse) {
+            stdout.writeln(
+                '\nTente pagar uma connta com o valor abaixo de R\$ $limitDisponivel:');
+            valueToPayCredit = stdin.readLineSync().toString();
+          } else if (limitDisponivel > valuePayParse) {
+            stdout.writeln(
+              '\nPagamento realizado com sucesso \nlimite atual: R\$ $saldoRestante\n',
+            );
+          }
+          break;
         }
-        break;
     }
-    // }
   } while (selectedMenuInteractive);
 }
 
